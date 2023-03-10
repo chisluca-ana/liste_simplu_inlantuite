@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cstring>
+using namespace std; //v31 2009
+int n,i;
+
+struct nod
+{
+    char info[21];
+    nod *urm;
+};
+nod *prim, *ultim, *p;
+char cuv[21];
+int main()
+{
+    cin>>n;
+    prim=ultim=NULL;
+    for (i=1; i<=n; i++)
+    {
+        cin>>cuv;
+        if(cuv[0]==cuv[strlen(cuv)-1])
+        {
+            p=new nod;
+            strcpy(p->info,cuv);
+            p->urm=prim;
+            prim=p;
+        }
+    }
+    for(p=prim; p!=NULL; p=p->urm)
+    {
+        cout<<p->info<<" ";
+    }
+}
